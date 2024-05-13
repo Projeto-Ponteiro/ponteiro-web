@@ -7,14 +7,12 @@ jobs:
     name: horusec-security
     runs-on: ubuntu-latest
     steps:
-    - name: Check out code
-      uses: actions/checkout@v2
-      with: # Necessário quando habilitado o autores de commit
+      - name: Check out code
+        uses: actions/checkout@v2
+        with: # Required when commit authors is enabled
         fetch-depth: 0
-    - name: Running Horusec Security
-    env:
-          HORUSEC_REPOSITORY_ACCESS_TOKEN: ${{ secrets.HORUSEC_REPOSITORY_ACCESS_TOKEN }}
-          HORUSEC_API_URL: ${{ secrets.HORUSEC_API_URL }}
+      - name: Running Horusec Security
         run: |
-          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest-beta
-          horusec start -p="./" -e="true" -a=HORUSEC_REPOSITORY_ACCESS_TOKEN: ${{ secrets.HORUSEC_REPOSITORY_ACCESS_TOKEN }}cd ../ -u=$HORUSEC_API_URL: ${{ secrets.HORUSEC_API_URL }}
+        curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest-beta
+        horusec start -p="./" -e="true" -a="dda18f34-fac1-4574-8505-6548b1e484d2" -u="https://a3a3a1ff-eb39-44fc-8e2d-b2b28f18abd5.ngrok-free.app”
+
